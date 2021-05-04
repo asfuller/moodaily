@@ -23,4 +23,4 @@ cannot be displayed onto home.php (which is where you see the error next to logo
 is also stored in the database.
 
 ## Click the link below to take you to the website:
-[Moodaily](http://moodaily.infinityfreeapp.com/SWE6623-FinalProject/)
+[Moodaily](https://moodaily.infinityfreeapp.com/SWE6623-FinalProject/)
