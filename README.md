@@ -22,5 +22,5 @@ Here, you can either login or signup into the system. Due to technical difficult
 cannot be displayed onto home.php (which is where you see the error next to logout.php). All data
 is also stored in the database.
 
-CLick the link below to take you to the website:
+## Click the link below to take you to the website:
 [Moodaily](http://moodaily.infinityfreeapp.com/SWE6623-FinalProject/)
