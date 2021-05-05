@@ -143,6 +143,20 @@ $(document).ready(function() {
 })
 
 //modal stuff
-$('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').trigger('focus')
+$('#AddData').on('shown.bs.modal', function () {
+  $('#inputData').trigger('focus')
 })
+
+$(function(){
+  $('#AddData').on('submit', function(e){
+      e.preventDefault();
+      $.ajax({
+          url: url, //this is the submit URL
+          type: 'GET', //or POST
+          data: $('#subscribe-email-form').serialize(),
+          success: function(data){
+               alert('successfully submitted')
+          }
+      });
+  });
+});

@@ -5,7 +5,7 @@ include("connection.php");
 include("mood-connection.php");
 include("functions.php");
 
-$user_data = check_login($con);
+/*$user_data = check_login($con);*/
 
 /**Mood Input PHP */
 if($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -135,7 +135,7 @@ for ($day = 1; $day <= $day_count; $day++, $str++) {
             <h4><a href="home.php">Moodaily</a></h4>
         </div>
         <ul class="nav-links">
-            <li><a href="home.html">Home</a></li>
+            <li><a href="home.php">Home</a></li>
             <li><a href="login.php">Login/Signup</a></li>
             <!--<li><a href="#AddData">Add Today's Data</a></li>-->
         </ul>

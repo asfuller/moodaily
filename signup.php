@@ -135,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] =='POST') {
 								<a href="login.php" id="login-form-link">Login</a>
 							</div>
 							<div class="col-xs-6">
-								<a href="signup.php" id="register-form-link">Register</a>
+								<a href="signup.php" class="active" id="register-form-link">Register</a>
 							</div>
 						</div>
 						<hr>
@@ -157,6 +157,7 @@ if ($_SERVER['REQUEST_METHOD'] =='POST') {
 										<div class="row">
 											<div class="col-sm-6 col-sm-offset-3">
 												<input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+												<p><a href="login.php">Already have an acount? Login</a></p>
 											</div>
 										</div>
 									</div>
@@ -173,17 +174,18 @@ if ($_SERVER['REQUEST_METHOD'] =='POST') {
     <script>
         $(function() {
 
-$('#login-form-link').click(function(e) {
-    $("#login-form").delay(100).fadeIn(100);
-     $("#register-form").fadeOut(100);
-    $('#register-form-link').removeClass('active');
-    $(this).addClass('active');
-    e.preventDefault();
-});
 $('#register-form-link').click(function(e) {
     $("#register-form").delay(100).fadeIn(100);
      $("#login-form").fadeOut(100);
     $('#login-form-link').removeClass('active');
+    $(this).addClass('active');
+    e.preventDefault();
+});
+
+$('#login-form-link').click(function(e) {
+    $("#login-form").delay(100).fadeIn(100);
+     $("#register-form").fadeOut(100);
+    $('#register-form-link').removeClass('active');
     $(this).addClass('active');
     e.preventDefault();
 });

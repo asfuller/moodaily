@@ -1,48 +1,47 @@
 <?php
+
 session_start();
 
-include("connection.php");
-include("functions.php");
+	include("connection.php");
+	include("functions.php");
 
 
-if($_SERVER['REQUEST_METHOD'] == "POST") {
+	if($_SERVER['REQUEST_METHOD'] == "POST")
+	{
+		//something was posted
+		$username = $_POST['username'];
+		$password = $_POST['password'];
 
-	//something was posted
-	$username = $_POST['username'];
-	$password = $_POST['password'];
+		if(!empty($username) && !empty($password) && !is_numeric($username))
+		{
 
-	if(!empty($username) && !empty($password) && !is_numeric($username)) {
+			//read from database
+			$query = "select * from users where username = '$username' limit 1";
+			$result = mysqli_query($con, $query);
 
+			if($result)
+			{
+				if($result && mysqli_num_rows($result) > 0)
+				{
 
-		//read from database
-		$query = "select * from users where username = '$username' limit 1";
-		$result = mysqli_query($con, $query);
+					$user_data = mysqli_fetch_assoc($result);
 
-		if($result) {
+					if($user_data['password'] === $password)
+					{
 
-			if($result && mysqli_num_rows($result) > 0) {
-
-
-				$user_data = mysqli_fetch_assoc($result);
-
-				if($user_data['password'] === $password) {
-
-
-					$_SESSION['user_id'] = $user_data['user_id'];
-					header("Location: home.php");
-					die;
+						$_SESSION['user_id'] = $user_data['user_id'];
+						header("Location: home.php", true, 301);
+						die;
+					}
 				}
 			}
+
+			echo "wrong username or password!";
+		}else
+		{
+			echo "wrong username or password!";
 		}
-
-		echo "wrong username or password!";
 	}
-
-	else {
-
-		echo "wrong username or password!";
-	}
-}
 
 ?>
 
@@ -164,10 +163,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 					<div class="panel-heading">
 						<div class="row">
 							<div class="col-xs-6">
-								<a href="login.php"  id="login-form-link">Login</a>
+								<a href="login.php" class="active" id="login-form-link">Login</a>
 							</div>
 							<div class="col-xs-6">
-								<a href="signup.php" class="active" id="register-form-link">Register</a>
+								<a href="signup.php" id="register-form-link">Register</a>
 							</div>
 						</div>
 						<hr>
@@ -188,6 +187,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 												<input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
 											</div>
 										</div>
+									</div>
+								</form>
+								<form id="register-form" method="post" role="form" style="display: block;">
+									<div class="form-group">
+										<p><a href="signup.php">Sign up today!</a></p>
 									</div>
 								</form>
 							</div>
